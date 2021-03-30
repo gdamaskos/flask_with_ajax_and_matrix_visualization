@@ -35,7 +35,8 @@ Create environment with Anaconda(tested with version >= 4.6.2):
     conda activate ccd3
 
 then install the dependencies, starting with numpy
-
+    pip install numpy
+    pip install wheel
     pip install -r requirements
 
 

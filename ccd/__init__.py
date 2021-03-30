@@ -23,8 +23,8 @@ _log.info('Imported settings from {}'.format(os.environ['CCD_SETTINGS']))
 
 # Celery configuration to use RabbitMQ broker for messaging
 app.config['CELERY_BROKER_URL'] = 'amqp://localhost'
-app.config['CELERY_RESULT_BACKEND'] = 'rpc://'
-celery = Celery(app.name, backend=app.config['CELERY_RESULT_BACKEND'], broker=app.config['CELERY_BROKER_URL'], include=['ccd.celery_tasks'])
+app.config['result_backend'] = 'rpc://'
+celery = Celery(app.name, backend=app.config['result_backend'], broker=app.config['CELERY_BROKER_URL'], include=['ccd.celery_tasks'])
 celery.conf.update(app.config)
 
 # Use ProxyFix to correct URL's when redirecting.
