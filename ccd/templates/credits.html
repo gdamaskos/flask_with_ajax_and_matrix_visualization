@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<!--Section: Best features-->
+<section>
+    <div class="row">
+        <!--First columnn-->
+        <div class="col-md-4">
+            <!--Card-->
+            <div class="card wow fadeInUp">
+
+
+                <!--Card content-->
+                <div class="card-block text-xs-left">
+                    <!--Title-->
+                    <h4 class="card-title">About</h4>
+                    <hr>
+                    <!--Text-->
+                    <p style="display: inline-block; text-align: left;">
+                    Frontend developed by <a href="https://www.linkedin.com/in/georgedamaskos/">George Damaskos</a><br>
+                    Backend developed by <a href="https://www.linkedin.com/in/georgedamaskos/">George Damaskos</a> and <a href="https://www.linkedin.com/in/andrea-murachelli/">Andrea Murachelli</a><br>
+                    Special thanks to Wouter Touw<br>
+                    <a href="http://www.nki.nl/divisions/biochemistry/perrakis-a-group/">Anastassis Perrakis Group</a><br>
+                    Funding by <a href="https://portal.west-life.eu/">West Life Project</a>
+                    </p>
+                    <!-- <a style="display: inline-block; vertical-align:top;" "href="https://portal.west-life.eu/" class="pull-right"><img style="height: 110px;" src="{{ url_for('static', filename='img/west-life-big.png') }}"></a> -->
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="https://portal.west-life.eu/"><img style="max-width: 50%; max-height: 50%;" src="{{ url_for('static', filename='img/west-life-big.png') }}"></a>
+                </div>
+                <!--/.Card content-->
+
+            </div>
+            <!--/.Card-->
+            <!--Card-->
+            <div class="card wow fadeInUp" data-wow-delay="0.2s">
+
+                <!--Card content-->
+                <div class="card-block text-xs-left">
+                    <!--Title-->
+                    <h4 class="card-title">Citing CCD</h4>
+                    <hr>
+                    <!--Text-->
+                    <h5>If you found CCD useful for your research, we would be obliged if you could cite the following publication:</h5>
+                    <p class="card-text">
+                    ProteinCCD: enabling the design of protein truncation constructs for expression and crystallization experiments
+                    Wijnand T. M. Mooij, Eirini Mitsiki and Anastassis Perrakis Nucl. Acids Res. (2009) 37 (suppl 2): W402-W405.<br>DOI: <a href="https://dx.doi.org/10.1093/nar/gkp256">10.1093/nar/gkp256</a>
+                </div>
+                <!--/.Card content-->
+                
+            </div>
+            <!--/.Card-->
+        </div>
+        <!--First columnn-->
+
+        <!--Second columnn-->
+        <div class="col-md-8">
+
+            <!--Card-->
+            <div class="card wow fadeInUp" data-wow-delay="0.2s">
+                <!--Card content-->
+                <div class="card-block text-xs-left">
+                    <!--Title-->
+                    <h4 class="card-title">Prediction servers</h4>
+                    <hr>
+                    <!--Text-->
+                    <p class="card-text">
+                        <a href="https://npsa-prabi.ibcp.fr/cgi-bin/npsa_automat.pl?page=/NPSA/npsa_hnn.html">HNN</a> (Guermeur, 1997)<br>
+                        <a href="https://npsa-prabi.ibcp.fr/cgi-bin/npsa_automat.pl?page=/NPSA/npsa_mlrc.html">MLR</a> (Guermeur <i>et al.</i>, 1999)<br>
+                        <a href="https://npsa-prabi.ibcp.fr/cgi-bin/npsa_automat.pl?page=/NPSA/npsa_dpm.html">DPM</a> (Deléage and Roux, 1987)<br>
+                        <a href="https://npsa-prabi.ibcp.fr/cgi-bin/npsa_automat.pl?page=/NPSA/npsa_predator.html">PREDATOR</a> (Frishman and Argos, 1996)<br>
+                        <a href="http://iupred.enzim.hu">IUPRED</a> (Zsuzsanna Dosztányi <i>et al.</i>, 2005)<br>
+                        <a href="http://smart.embl-heidelberg.de">SMART</a> (Letunic I <i>et al.</i>, 2005)<br>
+                        <a href="http://globplot.embl.de">GLOBPLOT</a> (Rune Linding <i>et al.</i>, 2003)<br>
+                        <a href="http://www.ch.embnet.org/software/COILS_form.html">COILS</a> (Lupas, A. <i>et al.</i>, 1991)<br>
+                        <a href="http://mbiljj45.bio.med.uni-muenchen.de:8888/secret/secret.seam">SECRET</a> (Pawel Smialowski, Thorsten Schmidt, Jürgen Cox, Andreas Kirschner, Dmitrij Frishman Will my protein crystallize? A sequence-based predictor. 28 November 2005) <br>
+                        <a href="http://mbiljj45.bio.med.uni-muenchen.de:8888/prosoII/prosoII.seam">PROSO II</a> (Pawel Smialowski, Gero Doose, Phillipp Torkler, Stefanie Kaufmann, Dmitrij Frishman PROSO II – a new method for protein solubility prediction. 21 May 2012)<br>
+                        <a href="http://www.biotech.ou.edu">RPSP</a> (R.G. Harrison <i>et al.</i>, 2000)<br>
+                    </p>
+                </div>
+                <!--/.Card content-->
+
+            </div>
+            <!--/.Card-->
+         
+        </div>
+        <!--Second columnn-->
+    </div>
+</section>
+<!--/Section: Best features-->
+{% endblock %}

@@ -1,0 +1,50 @@
+{
+  "bacterial_vectors": [
+    {"name": "1.1 1.2 1.3 pETNKI 6xHis-3C-ORF", "fw_overhang": "cagggacccggt", "rv_overhang": "cgaggagaagcccggtta"},
+    {"name": "1.4 1.5 1.6 StrepII-3C-ORF", "fw_overhang": "cagggacccggt", "rv_overhang": "cgaggagaagcccggtta"},
+    {"name": "1.8 pGEXNKI GST-3C-ORF", "fw_overhang": "cagggacccggt", "rv_overhang": "cgaggagaagcccggtta"},
+    {"name": "1.7 pGEXNKI GST-6xHis-3C-ORF", "fw_overhang": "cagggacccggt", "rv_overhang": "cgaggagaagcccggtta"},
+    {"name": "1.11 6xHis-TF-3C-ORF", "fw_overhang": "cagggacccggt", "rv_overhang": "cgaggagaagcccggtta"},
+    {"name": "1.12 6xHis-TF-TEV-StrepII-3C-ORF", "fw_overhang": "cagggacccggt", "rv_overhang": "cgaggagaagcccggtta"},
+    {"name": "1.13 6xHis-3C-ORF-3C-StrepII", "fw_overhang": "cagggacccggt", "rv_overhang": "gaaacagcacgtc"},
+    {"name": "1.10 6xHis-SUMO3-ORF", "fw_overhang": "ccagcagcagacgggaggt", "rv_overhang": "ggcggcggagcccgtta"}
+  ],
+  "insect_vectors": [
+    {"name": "2.13 6xHis-3C-ORF", "fw_overhang": "cagggacccggt", "rv_overhang": "cgaggagaagcccggtta"},
+    {"name": "2.9 StrepII-3C-ORF", "fw_overhang": "cagggacccggt", "rv_overhang": "cgaggagaagcccggtta"},
+    {"name": "2.12 6xHis-3C-ORF-3C-StrepII", "fw_overhang": "cagggacccggt", "rv_overhang": "gaaacagcacgtc"},
+    {"name": "2.6 ORF-3C-6xHis", "fw_overhang": "cagggacccggtatg", "rv_overhang": "gaaacagcacgtc"},
+    {"name": "2.7 ORF-3C-EGFP-6xHis", "fw_overhang": "cagggacccggtatg", "rv_overhang": "gaaacagcacgtc"},
+    {"name": "2.8 HMSS-ORF-3C-6xHis", "fw_overhang": "cagggacccggt", "rv_overhang": "gaaacagcacgtc"},
+    {"name": "2.11 Flag-2xStrepII-3C-ORF", "fw_overhang": "cagggacccggt", "rv_overhang": "cgaggagaagcccggtta"},
+    {"name": "2.10 ORF-3C-2xStrepII-Flag", "fw_overhang": "cagggacccggtatg", "rv_overhang": "gaaacagcacgtc"}
+  ],
+  "mammalian_vectors": [
+    {"name": "3.1 6xHis-3C-ORF", "fw_overhang": "cagggacccggt", "rv_overhang": "cgaggagaagcccggtta"},
+    {"name": "3.2 ORF-3C-6xHis", "fw_overhang": "cagggacccggtatg", "rv_overhang": "gaaacagcacgtc"},
+    {"name": "3.5 Flag-2xStrepII-3C-ORF", "fw_overhang": "cagggacccggt", "rv_overhang": "cgaggagaagcccggtta"},
+    {"name": "3.6 Secr-6xhis-3C-ORF", "fw_overhang": "cagggacccggt", "rv_overhang": "cgaggagaagcccggtta"},
+    {"name": "3.7 Secr-ORF-3C-6xHis", "fw_overhang": "cagggacccggt", "rv_overhang": "gaaacagcacgtc"},
+    {"name": "3.8 microSecr-ORF-3C-6xHis", "fw_overhang": "cagggacccggt", "rv_overhang": "gaaacagcacgtc"},
+    {"name": "3.9 microSecr-ORF-3C-2xStrepII-Flag", "fw_overhang": "cagggacccggt", "rv_overhang": "gaaacagcacgtc"},
+    {"name": "3.10 ORF-3CFLAGTEVGFP_AmpPuro", "fw_overhang": "cagggacccggtatg", "rv_overhang": "gaaacagcacgtc"},
+    {"name": "3.11 GFPTEVFLAG3C-ORF_AmpPuro", "fw_overhang": "cagggacccggt", "rv_overhang": "gaaacagcacgtctta"}
+  ],
+  "restriction_enzymes": [
+    {"name": "KpnI", "sequence": "ggtacc"},
+    {"name": "NcoI", "sequence": "ccatgg"},
+    {"name": "XhoI", "sequence": "ctcgag"},
+    {"name": "BamHI", "sequence": "ggatcc"},
+    {"name": "EcoRI", "sequence": "gaattc"},
+    {"name": "SalI", "sequence": "gtcgac"},
+    {"name": "SpeI", "sequence": "actagt"},
+    {"name": "XbaI", "sequence": "tctaga"},
+    {"name": "HindIII", "sequence": "aagctt"},
+    {"name": "NdeI", "sequence": "catatg"},
+    {"name": "NheI", "sequence": "gctagc"},
+    {"name": "SmaI", "sequence": "cccggg"},
+    {"name": "BglII", "sequence": "agatct"}
+  ]
+}
+
+

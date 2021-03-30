@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+  
+{% block content %}
+<!--Section: Best features-->
+<section>
+    <div class="row">
+        <!--First columnn-->
+        <div class="col-md-6">
+            <!--Card-->
+            <div class="card wow fadeInUp">
+                <!--Card content-->
+                <div class="card-block text-xs-left">
+                    <!--Title-->
+                    <h4 class="card-title">CCD info and usage</h4>
+                    <hr>
+                    <!--Text-->
+                    <p class="card-text">
+                        The <b>Protein Crystallisation Construct Designer (ProteinCCD)</b> is a tool to help deciding how to choose promising constructs for protein expression and crystallisation. A specific feature of CCD is that since it starts from the DNA sequence, it keeps track of the protein-DNA relationship. Thus, although all the analysis and construct choice is being done in the protein level, CCD can be used to suggest primers for PCR amplification of the chosen constructs, since it also knows the DNA sequence.
+                    </p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">CCD gathers various predictions for your protein and displays the information aligned for easy inspection.</li>
+                        <li class="list-group-item">CCD allows you then decide where possible constructs should start and stop by simply clicking with the mouse.</li>
+                        <li class="list-group-item">CCD does not design the construct automatically.</li>
+                        <li class="list-group-item">CCD will suggest primers for PCR amplification, based on either TM or simply a user choice for length.</li>
+                        <li class="list-group-item">CCD will not check the primers for secondary structure or for cross-hybrization in other sequences.</li>
+                    </ul>
+                    <br>
+                    <p class="card-text">
+                     In other words CCD is a tool to help you make smart choices, and will not do anything smart for you.
+                     <br><b>Tip:</b> At the application's layout you will find tips for each design step.<br>
+                    </p>
+                    <b>Usage:</b> 
+                    <ol>
+                        <li>Input the open reading frame of DNA sequence of interest in the input field, choose the prediction services and press submit button. The sequence is allowed to be in raw or fasta format. The sequence will be checked for start/stop codons and length, raising the corresponding warnings/errors. The next panel will contain translated DNA and the predictions the progress status of each one.</li>
+                        <li>Once all the results have been harvested, set any number of start and stop points for your construct. You can do this by clicking 'Mark starts' or 'Mark stops' first, followed by clicking on the protein sequence at desired start or stop locations. Selected starts will be highlighted in green, selected stops in red. Reset button clears all marks on the sequence.</li>
+                        <li>In the next panel, you design the primers by choosing overhangs and annealing parts. For the overhangs part, you can pick between lic and restriction cloning methods or type a custom one. For the annealing part, you can pick between melting temperature and base length methods.</li>
+                        <li>Clicking 'Get Primers' will give you all primers for the selected starts and stops. The length of the primers will be based on melting temperature or a given number of basepairs (depending on your earlier choice). For melting temperature method computation details, check <a href="http://www.biophp.org/minitools/melting_temperature/demo.php?formula=basic">here</a>.</li>
+                    </ol>
+                    <p class="card-text">
+                     CCD is a meta server, all predictions are retrieved from other web services.
+                     <br>
+                     See the <a href="{{ url_for('credits') }}">credits</a> page for details on the services used.
+                    </p>
+                </div>
+                <!--/.Card content-->
+            </div>
+            <!--/.Card-->
+        </div>
+        <!--First columnn-->
+
+        <!--Second columnn-->
+        <div class="col-md-6">
+            <!--Card-->
+            <div class="card wow fadeInUp" data-wow-delay="0.2s">
+                <!--Card content-->
+                <div class="card-block text-xs-left">
+                    <!--Title-->
+                    <h4 class="card-title">FAQs</h4>
+                    <hr>
+                    <!--Text-->
+                    <h5>What's new in ProteinCCD version 2.1?</h5>
+                    <p class="card-text">
+                     <b>05/08/2019</b> Bugfix: Save as fasta would sometimes return a cached alignment instead of the current one<br>
+                     <b>20/07/2019</b> New prediction: The sequence is blasted against the Protein Data Bank for similarity to current structures<br>
+                    </p>
+                    <h5>Will CCD design for me the best constructs for protein expression and crystallization ?</h5>
+                    <p class="card-text">
+                        No. CCD gathers various predictions for your protein and displays the information aligned for easy inspection. CCD allows you then decide where possible constructs should start and stop by simply clicking with the mouse. CCD will not design the construct automatically.
+                    </p>
+                    <h5>How does CCD design the PCR primers ?</h5>
+                    <p class="card-text">
+                        CCD can do that in two ways. The choice can be based on either melting temperature or simply a user choice for length. CCD will not check the primers for secondary structure or for cross-hybridization.
+                    </p>
+                    <h5>How do I know that it works ?</h5>
+                    <p class="card-text">                           
+                        There is no easy way to validate CCD, since the results depend on user's input. All we can say is that we have used it a lot in our lab at the NKI to make hundreds of constructs, and everybody uses it routinely. CCD will output a variety of useful results and its up to you to decide if you want to use them or not and how. The strength of it is that it consolidates the information, and eliminates the time consuming and error-prone step of 'back-translating' the protein predictions to the DNA sequence.
+                    </p>
+                    <h5>How can I test ProteinCCD ?</h5>
+                    <p class="card-text">
+                        Press button "Example sequence", it will load the geminin human gene DNA ORF (open reading frame). Choose predictions and hit submit. The translation should appear in the next panel immediately. The predictions should indicate a globular domain beginning around amino acid 50, coils beginning around amino acid 100, . You can inspect the output and choose the domain boundaries you prefer. Then click on 'Get Primers!' to get the desired PCR primers.
+                    </p>
+                    <h5>How do I get the DNA sequence for my protein ?</h5>
+                    <p class="card-text">
+                        Ideally you have sequenced your starting template and cut-and-paste your actual sequence. You can also get it from any database, just make sure your sequence starts with ATG and is the valid coding regions of your gene of interest.
+                    </p>
+                </div>
+                <!--/.Card content-->
+            </div>
+            <!--/.Card-->
+        </div>
+        <!--Second columnn-->
+    </div>
+</section>
+<!--/Section: Best features-->
+{% endblock %}

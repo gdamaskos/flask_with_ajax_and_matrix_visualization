@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        
+        <title>Crystallisation Construct Designer 2 - NKI</title>
+        
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    
+        <!-- Bootstrap core CSS -->
+        <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    
+        <!-- Material Design Bootstrap -->
+        <link href="{{ url_for('static', filename='css/mdb.min.css') }}" rel="stylesheet">
+    
+        <!-- Your custom styles (optional) -->
+        <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+        
+        <!-- Material Icons for collapsable panels -->
+        <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <div class="container-fluid">
+                <a href="https://portal.west-life.eu/" style="display: inline;">
+                    <img src="{{ url_for('static', filename='img/west-life.png') }}">
+                </a>
+                <h1 style="padding-top: 20px; padding-left: 45px; display: inline-block; color: #3399D5; font-weight: bold;">Crystallisation Construct Designer <sup>2</sup></h1>
+                <span style="font-size: 18px; display: inline-block; color: #3399D5;">(version 2.1)</span>
+                <span style="font-size: 14px;">Tested with Firefox and Chrome</span>
+            </div>
+            <!--Navbar-->
+            <nav class="navbar navbar-dark bg-primary">
+                <!-- Collapse button-->
+                <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapseEx2">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <div class="container-fluid">
+                    <!--Collapse content-->
+                    <div class="collapse navbar-toggleable-xs" id="collapseEx2">
+                        <!--Links-->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ url_for('tutorial') }}">Tutorial</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ url_for('credits') }}">Credits</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ url_for('help') }}">Help</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+                            </li>
+                        </ul>
+                        <b class="pull-right" style="color:orange"> Please report any issues to proteinccd [at] gmail.com .</b>
+                        <b class="pull-right" style="color:orange font-weight: bold">New functionality: blast against protein data bank.&nbsp&nbsp&nbsp&nbsp&nbsp;</b>
+                    </div>
+                    <!--/.Collapse content-->
+                </div>
+            </nav>
+            <!--/.Navbar-->
+        </header>
+        <main>
+            <div class="container-fluid home panel-group" id="bs-collapse">
+                <!--Main layout-->
+                    {% block content %}
+                    {% endblock %}
+                <!--/.Main layout-->
+            </div>
+        </main>
+        <!--Footer-->
+        <footer class="page-footer primary-color-dark center-on-small-only">
+            <!--Copyright-->
+                <div style="float:right">
+                    © 2017 Copyright: <a href="http://www.nki.nl">www.nki.nl&nbsp;</a>
+               </div>
+               <br>
+               <br>
+            <!--/.Copyright-->
+        </footer>
+        <br>
+        <!--/.Footer-->
+        
+        <!-- SCRIPTS -->
+    
+        <!-- JQuery -->
+        <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-2.2.3.min.js') }}"></script>
+    
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="{{ url_for('static', filename='js/tether.min.js') }}"></script>
+    
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="{{ url_for('static', filename='js/mdb.min.js') }}"></script>
+    	
+    	<!-- Custom js utilities -->
+        <script type="text/javascript" src="{{ url_for('static', filename='js/ccd_first_layer_utilities.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/ccd_second_layer_utilities.js') }}"></script>
+    </body>
+</html>

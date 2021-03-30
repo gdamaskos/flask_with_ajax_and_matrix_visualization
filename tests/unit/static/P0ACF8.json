@@ -1,0 +1,32 @@
+{
+    "protein_id": "P0ACF8", 
+    "protein_isoforms": "1", 
+    "protein_isoforms_list": [
+        {
+            "isoform_description": [
+                "This is the only known isoform"
+            ], 
+            "isoform_dna": "atgagcgaagcacttaaaattctgaacaacatccgtactcttcgtgcgcaggcaagagaatgtacacttgaaacgctggaagaaatgctggaaaaattagaagttgtcgttaacgaacgtcgcgaagaagaaagcgcggctgctgctgaagttgaagagcgcactcgtaagctgcagcaatatcgcgaaatgctgatcgctgacggtattgacccgaacgaactgctgaatagccttgctgccgttaaatctggcaccaaagctaaacgtgctcagcgtccggcaaaatatagctacgttgacgaaaacggcgaaactaaaacctggactggccaaggccgtactccagctgtaatcaaaaaagcaatggatgagcaaggtaaatccctcgacgatttcctgatcaagcaataa", 
+            "isoform_id": "P0ACF8", 
+            "isoform_matched_with": [
+                {
+                    "cds_database": "EMBL", 
+                    "cds_dna": "atgagcgaagcacttaaaattctgaacaacatccgtactcttcgtgcgcaggcaagagaatgtacacttgaaacgctggaagaaatgctggaaaaattagaagttgtcgttaacgaacgtcgcgaagaagaaagcgcggctgctgctgaagttgaagagcgcactcgtaagctgcagcaatatcgcgaaatgctgatcgctgacggtattgacccgaacgaactgctgaatagccttgctgccgttaaatctggcaccaaagctaaacgtgctcagcgtccggcaaaatatagctacgttgacgaaaacggcgaaactaaaacctggactggccaaggccgtactccagctgtaatcaaaaaagcaatggatgagcaaggtaaatccctcgacgatttcctgatcaagcaataa", 
+                    "cds_id": "X07688", 
+                    "cds_protein": "MSEALKILNNIRTLRAQARECTLETLEEMLEKLEVVVNERREEESAAAAEVEERTRKLQQYREMLIADGIDPNELLNSLAAVKSGTKAKRAQRPAKYSYVDENGETKTWTGQGRTPAVIKKAMDEQGKSLDDFLIKQ", 
+                    "cds_start": "861", 
+                    "cds_stop": "1274", 
+                    "cds_url": "https://www.ncbi.nlm.nih.gov/nuccore/X07688"
+                }
+            ], 
+            "isoform_matches": "1", 
+            "isoform_mismatched_with": [], 
+            "isoform_mismatches": "0", 
+            "isoform_protein_length": "137", 
+            "isoform_short_dna": "atgagcgaag...caagcaataa", 
+            "isoform_short_protein": "MSEALKILNN...KSLDDFLIKQ"
+        }
+    ], 
+    "protein_source_organism": "Escherichia coli (strain K12)", 
+    "protein_source_organism_common": ""
+}

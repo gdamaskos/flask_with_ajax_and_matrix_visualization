@@ -1,0 +1,68 @@
+#anaconda stuff
+/ccd/bin
+
+
+# Vim
+*.sw[a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+
+# Python
+*.py[cod]
+
+# Unit test / coverage reports
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*,cover
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Sphinx documentation
+docs/_build/
+
+# celery beat schedule file
+celerybeat-schedule
+
+# virtualenv
+venv/
+ENV/
+
+# Rope project settings
+.ropeproject
+
+# ccd
+deps/
+config/ccd_settings.cfg
+*.log
+tests/arbitary code
+tests/data
+
+# Eclipse
+.project
+.pydevproject
+.metadata
+.settings/
+
+
+ccd/static/pdb_processed\.fasta
+
+ccd/static/pdb_processed\.fasta\.pin
+
+ccd/static/pdb_processed\.fasta\.psq
+
+ccd/static/pdb_processed\.fasta\.phr
+
+static/BLAST_DB/pdb_blastdb\.phr
+
+static/BLAST_DB/pdb_blastdb\.pin
+
+static/BLAST_DB/pdb_blastdb\.psq
+
+ccd/static/blast_db/
