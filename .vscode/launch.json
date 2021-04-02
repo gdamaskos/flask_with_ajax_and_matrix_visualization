@@ -1,0 +1,29 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Flask Gunicorn",
+            "type": "python",
+            "request": "launch",
+            "program": "/home/giorgos/virtual_environments/ccd3/bin/gunicorn",
+            "gevent": true,
+            "args": [
+                "ccd:app",
+                "--bind=0.0.0.0:5000",
+                "--reload", 
+                "--log-level=debug",
+                "--log-file=-"
+            ],
+            "console": "integratedTerminal",
+            "env": {
+                "CCD_SETTINGS": "/home/giorgos/git_projects/code_samples/ccd_backbone/config/ccd_settings.cfg"
+            },
+            "cwd": "/home/giorgos/git_projects/code_samples/ccd_backbone",
+            //"postDebugTask": "killdebugger"
+        }
+    ]
+}
+

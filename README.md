@@ -1,3 +1,3 @@
 # code_samples
 
-Here I post code samples as a code portfolio.
+Here I post code samples as my software portfolio.
