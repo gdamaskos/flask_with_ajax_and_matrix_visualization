@@ -15,14 +15,16 @@
                 "--bind=0.0.0.0:5000",
                 "--reload", 
                 "--log-level=debug",
-                "--log-file=-"
+                "--log-file=-",
+                "--worker-class=gevent"
+//                "--workers=3"
             ],
             "console": "integratedTerminal",
             "env": {
-                "CCD_SETTINGS": "/home/giorgos/git_projects/code_samples/ccd_backbone/config/ccd_settings.cfg"
+                "CCD_SETTINGS": "/home/giorgos/git_projects/code_samples/flask_with_ajax_and_matrix_visualization/config/ccd_settings.cfg"
             },
-            "cwd": "/home/giorgos/git_projects/code_samples/ccd_backbone",
-            //"postDebugTask": "killdebugger"
+            "cwd": "/home/giorgos/git_projects/code_samples/flask_with_ajax_and_matrix_visualization",
+            "preLaunchTask": "killserversonport"
         }
     ]
 }

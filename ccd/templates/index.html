@@ -1,0 +1,126 @@
+{% extends "layout.html" %} {% block content %}
+<!--Card-->
+<div class="card panel-group panel" id="first-div" data-title="main_ccd_application">
+    <!--Title-->
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" href="#input-panel">
+                <span class="black-font">DNA sequence (Open Reading Frame - ORF)</span>
+            </a>
+        </h4>
+    </div>
+    <!--Card content-->
+    <div class="card-block panel-collapse collapse in" id="input-panel">
+        <!--Text-->
+        <h5>Search by Uniprot accession number or entry name (e.g. Q15287 or RNPS1_HUMAN): </h5>
+        <br>
+        <div id="uniprot-id-search-alerts" class=""></div>
+        <input id="search-id" type="text" autocomplete="off" placeholder="Uniprot ID or Accession" style="display: inline; width: 210px;">
+        <input style="display: inline;" type="button" value="Search" onclick="search_uniprot()">
+        <div style="display: block;">
+            <img src="{{ url_for('static', filename='img/bgLoad.gif') }}" style="display: none;" class="uniprot-search-progress-bar">
+            <img src="{{ url_for('static', filename='img/bgLoad.gif') }}" style="display: none;" class="uniprot-search-progress-bar">
+        </div>
+        <div id="uniprot-id-search-results" class=""></div>
+        <br>
+        <h5>Or paste DNA sequence:</h5>
+        <div class="row">
+            <div class="col-md-12">
+                <textarea class="dna-orf" autocomplete="on" spellcheck="false" placeholder="DNA sequence area" id="dna-orf"></textarea>
+            </div>
+        </div>
+        <div id="input-alerts"></div>
+        <div class="row">
+            <div class="col-md-12">
+                <button type="button" class="btn btn-primary" onclick="get_predictions()">Submit</button>
+                <div class="btn-group">
+                    <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Prediction servers</button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" onclick="select_all_serv()">Select all</a>
+                        <a class="dropdown-item" onclick="deselect_all_serv()">Deselect all</a>
+                        <div class="dropdown-divider"></div>
+                        <label class="dropdown-item service-label">&nbsp;&nbsp;<input type="checkbox" class=""> PREDATOR</label>
+                        <label class="dropdown-item service-label">&nbsp;&nbsp;<input type="checkbox" class=""> IUPRED</label>
+                        <label class="dropdown-item service-label">&nbsp;&nbsp;<input type="checkbox" class=""> GLOBPLOT</label>
+                        <label class="dropdown-item service-label">&nbsp;&nbsp;<input type="checkbox" class=""> SMART</label>
+                        <label class="dropdown-item service-label">&nbsp;&nbsp;<input type="checkbox" class=""> COILS</label>
+                    </div>
+                </div>
+                <form class="form-inline" action="" style="display: inline;">
+                    <input style="display: inline;" type="button" value="Use example sequence" onclick="sample_sequence()">
+                    <span> or upload a FASTA file</span>
+                    <input type="file" style="display:inline;" id="file-seq" onchange="seq_file();">
+                    <input style="display: inline;" type="button" value="Clear sequence area" onclick="clear_sequence()">
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--/.Card content-->
+</div>
+<!--/.Card-->
+
+<!--Card-->
+<div class="card section1 panel-group panel">
+    <!--Title-->
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#" href="#predictions-panel">
+                <span class="black-font">Select starts/stops</span>
+            </a>
+        </h4>
+    </div>
+    <!--Card content-->
+    <div class="card-block panel-collapse collapse in" id="predictions-panel">
+        <!--Text-->
+        <div id="predictions-info-placeholder"></div>
+        <div id="predictions-alerts-placeholder"></div>
+        <div id="alignments-alerts"></div>
+        <div class="row">
+            <div class="col-md-3">
+
+                <div class="btn-group" id="mark-radios" data-toggle="buttons" style="margin-top: 10px">
+                    <label class="btn btn-success active"><input value="starts-mode" type="radio" autocomplete="off" checked>Mark starts</label>
+                    <label class="btn btn-danger"><input value="stops-mode" type="radio" autocomplete="off">Mark stops</label>
+                </div>
+                <button type="button" class="btn btn-info" onclick="reset_aa()" autocomplete="off" style="margin-top: 17px">Reset</button>
+
+            </div>
+            <div class="col-md-9">
+            </div>
+        </div>
+        <br>
+        <table class="pred-panel">
+            <tr>
+                <td style="width: 190px;">
+                    <div class="pred-labels" id="aa-label"></div>
+                </td>
+                <td>
+                    <div class="pred-viewer" id="aa-viewer"></div>
+                </td>
+            </tr>
+        </table>
+        <table class="pred-panel">
+            <tr>
+                <td style="width: 190px;">
+                    <div class="pred-labels" id="sequences-labels" data-placement="right"></div>
+                </td>
+                <!--                           data-toggle="tooltip" title="Visit Credits page for more information on the prediction servers."> -->
+                <td>
+                    <div class="pred-viewer" id="sequences-viewer"></div>
+                </td>
+            </tr>
+        </table>
+        <div class="row">
+            <div class="col-md-12">
+                <div style="float:right">
+                    <input id="predictions-filename" type="text" autocomplete="off" placeholder="ccd_predictions" style="display: inline; width: 115px;">.csv
+                    <input style="display: inline" type="button" value="Save" onclick="save_predictions()">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/.Card content-->
+</div>
+<!--/.Card-->
+
+{% endblock %}

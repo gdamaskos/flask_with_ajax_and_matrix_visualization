@@ -4,11 +4,9 @@
     "version": "2.0.0",
     "tasks": [
                 {
-                    "label": "killdebugger",
+                    "label": "killserversonport",
                     "type": "shell",
                     "command": "lsof -t -i tcp:5000 | xargs kill -9"
                 }
             ]
-        }
-    ]
 } 
