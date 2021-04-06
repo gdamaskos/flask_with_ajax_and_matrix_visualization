@@ -10,18 +10,3 @@ BLAST= 'path/to/ncbi/blastp'
 # network details 
 SECRET_KEY = "dummy secret key"
 EMAIL = 'Your email'
-
-# local blast databases
-# these should point to the database name, not to the compiled database files
-# e.g. if the database files compiled by makeblastdb are:
-      /folder/.
-      /folder/.. 
-#     /folder/local_swissprot.phr
-#     /folder/local_swissprot.pin
-#     /folder/local_swissprot.psq
-# then:
-# LOCAL_SWISSPROT_DATABASE = "folder/local_swissprot" 
- 
-LOCAL_SWISSPROT_DATABASE = '/full_path/local_swissprot'
-LOCAL_TREMBL_DATABASE = '/full_path/local_trembl'
-LOCAL_PDB_DATABASE = '/full_path/local_pdb'

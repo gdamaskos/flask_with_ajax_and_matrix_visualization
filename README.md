@@ -22,6 +22,7 @@ The following prerequisites are required by CCD and must be installed manually i
 * predator (already uploaded in this repository's deps directory)
 * uipred (already uploaded in this repository's deps directory)
 * ncoils (e.g. `apt-get install ncoils` on a Debian-like OS)
+* muscle (e.g. `apt-get install muscle` on a Debian-like OS)
 * git (e.g. `apt-get install git` on a Debian-like OS)
 * python 3.8
 
@@ -46,7 +47,7 @@ then install python dependencies:
 
 Modify the settings in `config/settings.example` to your needs and rename the
 file to `config/ccd_settings.cfg`. Make sure you generate a new secret key,
-and fill in a valid email to allow Uniprot, NCBI and EBI to notify you in case of
+and fill in a valid email to allow Uniprot to notify you in case of
 problems.
 
 The secret key can be generated using a python shell, for example:
