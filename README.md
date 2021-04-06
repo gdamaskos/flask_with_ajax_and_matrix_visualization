@@ -17,6 +17,8 @@ Basic web software used in this project:
 
 ## Prerequisites
 
+First of all, you must be running a Debian Operating System like Ubuntu.
+
 The following prerequisites are required by CCD and must be installed manually if not present:
 
 * predator (already uploaded in this repository's deps directory)
@@ -39,7 +41,7 @@ Create a python3.8 virtual environment containing the dependences found in requi
     python3 -m venv ~/virtual_environments/ccd3
     source ~/virtual_environments/ccd3/bin/activate
 
-then install python dependencies:
+Install python dependencies:
 
     pip install numpy
     pip install wheel
@@ -60,7 +62,7 @@ Start the app!
 
     ./run_autoreload.sh
 
-Then visit with your browser the address:
+Visit the address:
 
     http://localhost:5000
 
