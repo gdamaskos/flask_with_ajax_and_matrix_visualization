@@ -64,7 +64,7 @@ Then visit with your browser the address:
 
     http://localhost:5000
 
-# Further steps for deployment
+# Further options for deployment
 
 If needed, configure a reverse proxy. `config/apache.conf` is an example for apache.
 
