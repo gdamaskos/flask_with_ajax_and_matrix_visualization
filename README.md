@@ -64,10 +64,16 @@ Then visit with your browser the address:
 
     http://localhost:5000
 
-If needed, configure a reverse proxy. `config/apache.conf` is an example for
-apache.
+# Further steps for deployment
 
-Optionally, copy the settings file to `/etc/ccd.cfg`.
+If needed, configure a reverse proxy. `config/apache.conf` is an example for apache.
 
-Optionally, install `supervisor` and use the `config/supervisor.example` to
-make a system service ccd managed by supervisor (edit where necessary).
+Optionally, install `supervisor` and use the `config/supervisor.example` to make a system service ccd managed by supervisor (edit where necessary).
+
+The contact page (available only on developer versions for ccd.rhpc.nki.nl) requires a working Google maps API. 
+(see https://developers.google.com/maps/api-key-best-practices for how to obtain and configure one)
+In short:
+1. Generate an API key
+2. Restrict it by HTML referrer to the website you are running CCD from + /contact (e.g. ccd.rhpc.nki.nl/contact)
+3. Enable "Map Javascript API".
+4. Add your API key to contact.html template in the place of the current key.
