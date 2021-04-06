@@ -19,6 +19,8 @@ Basic web software used in this project:
 
 The following prerequisites are required by CCD and must be installed manually if not present:
 
+* predator (already uploaded in this repository's deps directory)
+* uipred (already uploaded in this repository's deps directory)
 * ncoils (e.g. `apt-get install ncoils` on a Debian-like OS)
 * git (e.g. `apt-get install git` on a Debian-like OS)
 * python 3.8
