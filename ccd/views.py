@@ -18,10 +18,9 @@ from ccd.custom_exceptions import (NoNeedToAlignError, NoIsoformsPresentError,
 from ccd.services import predict
 
 
-
-
 _log = logging.getLogger(__name__)
 ccd_sequences = SeqRecord(Seq(''))
+
 
 
 @app.route('/')
@@ -49,16 +48,6 @@ def contact():
     return render_template('contact.html')
 
 
-@app.route('/get_vectors', methods=['GET'])
-def get_vectors():
-    try:
-        return send_from_directory('static', 'vectors_enzymes.json')
-    except Exception as e:
-        traceback.print_exc(file=sys.stdout) 
-        _log.error(str(e))
-        return str(e)
-
-
 @app.route('/search_uniprot/<uniprot_accession_or_entry_name>', methods=['GET'])
 def search_uniprot(uniprot_accession_or_entry_name):
     _log.debug('Searching Uniprot..')
@@ -79,9 +68,6 @@ def search_uniprot(uniprot_accession_or_entry_name):
         except (NoNeedToAlignError, NoIsoformsPresentError):
             pass
         return jsonify(data)
-#     except DNASearchTimeoutError:
-#         _log.error('Downloading DNA entries from NCBI took too long')
-#         return jsonify({'status': 'ERROR', 'reason': 'Failed to fetch crossreferences from DNA databases.'})
     except IdNotFoundError:
         _log.error('ID not found.')
         return jsonify({'status': 'ERROR', 'reason': 'ID not found.'})
@@ -157,201 +143,3 @@ def prediction(service_name):
         return json.dumps({'status': 'OK',
                            'prediction': service_name,
                            'error': 'YES'})
-
-
-@app.route('/primersnpeptides', methods=['POST'])
-def primersnpeptides():
-    starts = request.values.get('starts')
-    starts = json.loads(starts)
-
-    stops = request.values.get('stops')
-    stops = json.loads(stops)
-
-    method_value = request.values.get('method_value')
-    method_value = json.loads(method_value)
-
-    forward_overhang = request.values.get('FWoverhang')
-    reverse_overhang = request.values.get('RVoverhang')
-    if sequence.over_validator(forward_overhang) and \
-            sequence.over_validator(reverse_overhang):
-        _log.debug('Building primers and validating starts/stops..')
-        dna_seq = ''.join(ccd_sequences.letter_annotations["orf_triplets"])
-        if method_value[0] == 0:  # use melting temperature
-            primers, errors, vstarts, vstops = \
-                    sequence.build_primers_tm(dna_seq, starts, stops,
-                                              forward_overhang,
-                                              reverse_overhang,
-                                              int(method_value[1]))
-            MWs, pIs, epsilons = sequence.protparams(str(ccd_sequences.seq),
-                                                     vstarts, vstops)
-        if method_value[0] == 1:  # use number of bases
-            primers, errors, vstarts, vstops = \
-                    sequence.build_primers_bs(dna_seq, starts, stops,
-                                              forward_overhang,
-                                              reverse_overhang,
-                                              int(method_value[1]))
-            MWs, pIs, epsilons = sequence.protparams(str(ccd_sequences.seq),
-                                                     vstarts, vstops)
-        return json.dumps({'status': 'OK',
-                           'primers': primers,
-                           'vstarts': vstarts,
-                           'vstops': vstops,
-                           'MWs': MWs,
-                           'pIs': pIs,
-                           'epsilons': epsilons,
-                           'errors': errors})
-    else:
-        return json.dumps({'status': 'VALIDATE_ERROR'})
-
-
-@app.route('/get_separated_vectors', methods = ['GET'])
-def get_separated_vectors():
-    try:
-        vnames = vector_sequence.vector_names()
-        return json.dumps({'status': 'OK', 'vnames': vnames})
-    except Exception as e:
-        traceback.print_exc(file=sys.stdout) 
-        _log.error(str(e))
-        return json.dumps({'status': 'VECTORS_ERROR'})
-
-
-@app.route('/mapmake', methods = ['GET'])
-def mapmake():
-    vname = request.values.get('vname')
-    pname = request.values.get('pname')
-    pmfname = request.values.get('pmfname')
-    pstarts = request.args.getlist('pstarts[]')
-    pstops = request.args.getlist('pstops[]')
-    
-    dna_seq = ''.join(ccd_sequences.letter_annotations["orf_triplets"])
-    inserts_dna_seq = vector_sequence.poly2dna_seq(dna_seq, pname, pstarts, pstops)
-    zbuff = vector_sequence.make_plasmid_maps(inserts_dna_seq, vname)
-
-    return send_file(zbuff,
-                     attachment_filename=pmfname,
-                     as_attachment=True)
-
-
-@app.route('/crysol_prediction/<service_name>', methods=['POST'])
-def crysol_prediction(service_name):
-    pp_seqs = request.values.get('selected_polypeptides_sequences')
-    pp_seqs = json.loads(pp_seqs)
-
-    _log.debug('Getting crysol predictions..')
-    crysol_task = celery_tasks.crysol_service.delay(service_name, pp_seqs)
-    return jsonify({}), 202, {'Location': url_for('taskstatus', _external=True, _scheme='https',
-                                                  task_id=crysol_task.id)}
-    
-    
-@app.route('/status/<task_id>', methods=['GET'])
-def taskstatus(task_id):
-    task = celery_tasks.crysol_service.AsyncResult(task_id)
-    response = {}
-    
-    if task.state == 'SUCCESS':
-        response = {
-            'state': task.state,
-            'result': task.get(propagate=False),
-            'info': str(task.info)
-        }
-    # defensive programming below, because success state was passing the first check sometimes
-    elif task.state == 'FAILURE' or task.state == 'PENDING' or \
-            task.state == 'REVOKED' or task.state == 'RETRY' or task.state == 'RECEIVED':
-        # other state or something went wrong in the background job
-        response = {
-            'state': task.state,
-            'geom': 'nullis'
-        }
-    return jsonify(response)
- 
- 
-@app.route('/revokeall', methods=['GET'])
-def alltasksrevoke():
-    task_ids_list = request.args.getlist('task_ids_list[]')
-    for task_id in task_ids_list:
-        task = celery_tasks.crysol_service.AsyncResult(task_id)
-        task.revoke(terminate=True)
-    return jsonify({}), 202, {'status': 'OK'}  
-     
-    
-@app.route('/tag_cleave', methods=['POST'])
-def tag_cleave():
-    polypeptides = request.values.get('polypeptides')
-    polypeptides = json.loads(polypeptides)
-    pstarts = [row[2] for row in polypeptides]
-    pstops = [row[3] for row in polypeptides]
-    vname = request.values.get('vname')
-    pname = request.values.get('pname')
-    
-    dna_seq = ''.join(ccd_sequences.letter_annotations["orf_triplets"])
-    inserts_dna_seq = vector_sequence.poly2dna_seq(dna_seq, pname, pstarts, pstops)
-    tagged_cleaved = orf_finder.tag_cleave_pps(inserts_dna_seq, vname)   
-    
-    return json.dumps({'tagged_cleaved': tagged_cleaved})
-
-
-# A bunch of redirects from the old ccd
-# Obtained from 404s in the logs
-@app.route('/welcome.html')
-def redirect_welcome():
-    return redirect(url_for('index'), 301)
-
-
-@app.route('/Welcome.html')
-def redirect_welcome_capital():
-    return redirect(url_for('index'), 301)
-
-
-@app.route('/design.html')
-def redirect_design():
-    return redirect(url_for('index'), 301)
-
-
-@app.route('/Design.html')
-def redirect_design_capital():
-    return redirect(url_for('index'), 301)
-
-
-@app.route('/help.html')
-def redirect_help():
-    return redirect(url_for('help'), 301)
-
-
-@app.route('/Help.html')
-def redirect_help_capital():
-    return redirect(url_for('help'), 301)
-
-
-@app.route('/start_ccd.html')
-def redirect_start_ccd():
-    return redirect(url_for('index'), 301)
-
-
-@app.route('/PCR_oligos.html')
-def redirect_PCR_oligos():
-    return redirect(url_for('index'), 301)
-
-
-@app.route('/Inspect.html')
-def redirect_inspect():
-    return redirect(url_for('index'), 301)
-
-
-@app.route('/FAQ.html')
-def redirect_faq():
-    return redirect(url_for('help'), 301)
-
-
-@app.route('/Input_DNA.html')
-def redirect_input_DNA():
-    return redirect(url_for('index'), 301)
-
-
-@app.route('/Tutorial.html')
-def redirect_tutorial():
-    return redirect(url_for('tutorial'), 301)
-
-
-@app.route('/Meta-actions.html')
-def redirect_meta_actions():
-    return redirect(url_for('index'), 301)
