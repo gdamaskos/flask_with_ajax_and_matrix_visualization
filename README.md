@@ -60,6 +60,9 @@ Start the app!
 
     ./run_autoreload.sh
 
+Then visit with your browser the address:
+
+    http://localhost:5000
 
 If needed, configure a reverse proxy. `config/apache.conf` is an example for
 apache.
