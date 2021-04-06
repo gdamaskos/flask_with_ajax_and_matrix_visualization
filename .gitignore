@@ -23,6 +23,6 @@ docs/_build/
 test.sh
 tests/
 config/ccd_settings.cfg
-*.log
+ccd.log
 tests/arbitary code
 tests/data
