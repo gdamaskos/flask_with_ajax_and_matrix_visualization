@@ -2,7 +2,7 @@
 
 CCD stands for Crystallisation Construct Designer. 
 
-CCD is a web application that facilitates protein crystallography experiments. I developed it during my employment at the Netherlands Cancer Institute. In this repository you can find the core of the application.
+CCD is a web application that facilitates protein crystallography experiments. In this repository you can find the core of the application.
 
 You can visit the full site https://ccd.rhpc.nki.nl
 
