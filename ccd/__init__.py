@@ -3,7 +3,6 @@ import os
 from logging import FileHandler
 from flask import Flask
 from flask_debugtoolbar import DebugToolbarExtension
-from celery import Celery
 
 # Create the top-level logger.
 _log = logging.getLogger(__name__)
@@ -20,12 +19,6 @@ _log.info('Creating app')
 app = Flask(__name__)
 app.config.from_envvar('CCD_SETTINGS')
 _log.info('Imported settings from {}'.format(os.environ['CCD_SETTINGS']))
-
-# Celery configuration to use RabbitMQ broker for messaging
-app.config['CELERY_BROKER_URL'] = 'amqp://localhost'
-app.config['result_backend'] = 'rpc://'
-celery = Celery(app.name, backend=app.config['result_backend'], broker=app.config['CELERY_BROKER_URL'], include=['ccd.celery_tasks'])
-celery.conf.update(app.config)
 
 # Use ProxyFix to correct URL's when redirecting.
 from ccd.middleware import ReverseProxied
