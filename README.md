@@ -26,7 +26,7 @@ The following prerequisites are required by CCD and must be installed manually i
 * ncoils (e.g. `apt-get install ncoils` on a Debian-like OS)
 * muscle (e.g. `apt-get install muscle` on a Debian-like OS)
 * git (e.g. `apt-get install git` on a Debian-like OS)
-* python 3.8
+* python 3.8, follow this tutorial to prepare https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-programming-environment-on-ubuntu-20-04-quickstart
 
 ## Steps for setting up the development environment
 
@@ -43,7 +43,6 @@ Create a python3.8 virtual environment containing the dependences found in requi
 
 Install python dependencies:
 
-    pip install numpy
     pip install wheel
     pip install -r requirements.txt
 
