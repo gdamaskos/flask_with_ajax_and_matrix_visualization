@@ -59,6 +59,7 @@ The secret key can be generated using a python shell, for example:
 	>>> os.urandom(96)
 
 Run the tests
+
     /test.sh
 
 Start the app!
