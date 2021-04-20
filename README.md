@@ -60,7 +60,7 @@ The secret key can be generated using a python shell, for example:
 
 Run the tests
 
-    /test.sh
+    ./test.sh
 
 Start the app!
 
