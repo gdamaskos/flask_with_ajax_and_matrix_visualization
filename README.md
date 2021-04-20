@@ -58,6 +58,9 @@ The secret key can be generated using a python shell, for example:
 	>>> import os
 	>>> os.urandom(96)
 
+Run the tests
+    /test.sh
+
 Start the app!
 
     ./run_autoreload.sh
