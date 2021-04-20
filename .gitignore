@@ -20,9 +20,5 @@ docs/_build/
 .vscode
 
 # ccd
-test.sh
-tests/
 config/ccd_settings.cfg
 ccd.log
-tests/arbitary code
-tests/data
