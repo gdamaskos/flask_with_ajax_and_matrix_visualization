@@ -745,8 +745,6 @@ class CCDSParser(object):
         aa_seq = Seq(''.join([aa.text for aa in aminoacids]), ExtendedIUPACProtein())
         assert aa_seq == dna_seq.translate(cds=True) 
         return CodingSequence(id_, 'CCDS', dna_seq, aa_seq)
-
-class BlastRunner(object):
     
     def __init__(self):
         super().__init__()
@@ -804,8 +802,6 @@ class BlastRunner(object):
             if e or o:
                 raise OSError(e)
             return temp_out.read().decode('utf-8')
-
-class BlastParser(object):
     
     def __init__(self):
         super().__init__()
