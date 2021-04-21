@@ -1,0 +1,54 @@
+[
+    {
+    	"Nt_tag": true,
+    	"Ct_tag": false,
+        "add_left": "T",
+        "add_right": "TAAC",
+        "class_name": "NKI_1_1",
+        "cut_left": 5129,
+        "cut_right": 5174,
+        "filename": "1_1pETNKI-his3C-LIC-kan.seq",
+        "is_LIC": true,
+        "name": "NKI_1_1_pET-His3C-LIC_Kan",
+        "short_name": "NKI_1_1"
+    },
+    {	
+    	"Nt_tag": true,
+        "Ct_tag": false,
+        "add_left": "T",
+        "add_right": "TAAC",
+        "class_name": "NKI_1_2",
+        "cut_left": 5262,
+        "cut_right": 5307,
+        "filename": "1_2pETNKI-his3C-LIC-amp.seq",
+        "is_LIC": true,
+        "name": "NKI_1_2_pET-his3C-LIC_amp",
+        "short_name": "NKI_1_2"
+    },
+    {	
+    	"Nt_tag": true,
+        "Ct_tag": true,
+        "add_left": "T",
+        "add_right": "GAC",
+        "class_name": "NKI_1_13",
+        "cut_left": 5129,
+        "cut_right": 5134,
+        "filename": "1_13pETNKI-his3C-LIC-3C-strepII-kan.seq",
+        "is_LIC": true,
+        "name": "NKI_1_13_pET-His3C-LI-3CStrepII_Kan",
+        "short_name": "NKI_1_13"
+    },
+    {	
+    	"Nt_tag": true,
+        "Ct_tag": false,
+        "add_left": "TATG",
+        "add_right": "TAAC",
+        "class_name": "NKI_3_11",
+        "cut_left": 1825,
+        "cut_right": 1830,
+        "filename": "3_11pcDNA51-GFP-TEV-FLAG-3C-LIC_Amp-Puro_FRT.seq",
+        "is_LIC": true,
+        "name": "NKI_3_11_pCDNA-GFPTEVFLAG3C-LIC_AmpPuro",
+        "short_name": "NKI_3_11"
+    }
+]
