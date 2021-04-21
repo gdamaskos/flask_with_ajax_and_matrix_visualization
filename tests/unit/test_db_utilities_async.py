@@ -152,8 +152,8 @@ class Test_url_formatter(unittest.TestCase):
             formatter.format_for_summary('NotADatabase', ['id1','id2'])
             
     def test_format_for_summary(self):
-        query1 = ('EMBL', ['CR456855.1', 'DQ917642.1']) #list of ids
-        query2 = ('RefSeq', 'NM_001270952.1') #single id
+        query1 = ('EMBL', ['CR456855.1', 'DQ917642.1']) # list of ids
+        query2 = ('RefSeq', 'NM_001270952.1') # single id
         exp = [('Summary', 
                 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=nuccore&id=CR456855.1,DQ917642.1'), 
                ('Summary', 
@@ -175,14 +175,14 @@ class Test_url_formatter(unittest.TestCase):
     def test_uniprot_no_format(self):
         formatter = dba.UrlFormatter()
         with self.assertRaises(ValueError):
-            formatter.format('Uniprot', 'q9uj41') #no format
+            formatter.format('Uniprot', 'q9uj41') # no format
         with self.assertRaises(ValueError):
-            formatter.format('Uniprot', 'q9uj41', format_='notvalid') #unsupported format
+            formatter.format('Uniprot', 'q9uj41', format_='notvalid') # unsupported format
             
     def test_uniprot_batch(self):
         formatter = dba.UrlFormatter()
         id_list = ['q9uj41','Q15287','Q96RL1']
-        formats = ['xml', 'html', 'fasta'] #batch added below
+        formats = ['xml', 'html', 'fasta'] # batch added below
         for f in formats: 
             exp = [('Uniprot',
                     f'https://www.uniprot.org/uploadlists?query=q9uj41 Q15287 Q96RL1&from=ACC+ID&to=ACC&format={f}')]
@@ -240,7 +240,7 @@ class TestUniprotFetcher(unittest.TestCase):
     def test_returns_fasta(self):
         fetcher = dba.UniprotFetcher()
         result = fetcher.fetch('q9uj41', 'sequence')
-        expected = q9uj41_2_protein_seq #sequence at end of file
+        expected = q9uj41_2_protein_seq # sequence at end of file
         self.assertEqual(result, expected)
 
 class TestUniprotParser(unittest.TestCase):
@@ -279,8 +279,8 @@ class TestUniprotParser(unittest.TestCase):
                         'Eukaryota')
         
     def test_get_isoform_descriptions_malformed_uniprot_in_entry(self):
-        #sometimes the uniprot entry has a difference that causes the parsing 
-        #of the descriptions to glitch. Q9NWV8 is one such offenders
+        # sometimes the uniprot entry has a difference that causes the parsing 
+        # of the descriptions to glitch. Q9NWV8 is one such offenders
         exp = {u'Q9NWV8-2': [u'The sequence of this isoform differs from the canonical sequence as follows:\n', 
                              u'1-115: MEVAEPSSPT...SLPKLESFNG \u2192 MMGASTLQEP...HHGSTVQRKC\n', 
                              u'263-329: Missing\n'], 
@@ -298,9 +298,6 @@ class TestUniprotParser(unittest.TestCase):
                           'NM_001288757.1', 'NM_014173.3'],
                'EMBL': ['AF161491', 'AL136692', 'AK000578', 'AK299493', 'AK301193',
                         'CR533526', 'BC000788', 'BC006244', 'BC091491']}
-#                'Translated':['AAH06244.1', 'CAB66627.1', 'BAG61451.1', 
-#                              'CAG38557.1', 'AAH91491.1', 'BAG62773.1', 
-#                              'BAA91268.1', 'AAH00788.1', 'AAF29106.1']}
         self.assertEqual(exp, parser.get_crossreferences())
     
     def test_match_entry_to_id(self):
@@ -355,7 +352,7 @@ class TestUniprotParser(unittest.TestCase):
             </evidence>   
         </entry>
         '''
-        #the pdb code in evidence must be ignored
+        # the pdb code in evidence must be ignored
         exp = [PdbCrossref('P00698', '132L', 19, 147, ['A']),
                PdbCrossref('P00698', '4WL6', 1, 147, ['A']),
                PdbCrossref('P00698', '2X89', 27, 119, ['D','E','F','G'])]
@@ -364,7 +361,7 @@ class TestUniprotParser(unittest.TestCase):
         self.assertEqual(sorted(res), sorted(exp))
         
     def test_get_pdb_construct_none_present(self):
-        exp = [] #should return empty list
+        exp = [] # should return empty list
         entry = '''<entry><accession>P18181</accession></entry>'''
         parser = dba.UniprotParser(BeautifulSoup(entry, 'xml'), None)
         res = parser.get_pdb_constructs()
@@ -501,7 +498,7 @@ class TestGenBankParser(unittest.TestCase):
                              rpsL_ecoli_dna_seq, rpsL_ecoli_protein_seq)
         entry = self._fetch_data(database, id_list)[0][1]
         res = self.parser.parse_non_eukaryotes(database, entry) 
-        self.assertIn(exp, res) #others will be there - multiple cds
+        self.assertIn(exp, res) # others will be there - multiple cds
         
     def test_bact_non_standard_start_codon(self):
         id_list = ['AH002539']
@@ -510,7 +507,7 @@ class TestGenBankParser(unittest.TestCase):
                              eftu1_ecoli_dna_seq, eftu1_ecoli_protein_seq)
         entry = self._fetch_data(database, id_list)[0][1]
         res = self.parser.parse_non_eukaryotes(database, entry) 
-        self.assertIn(exp, res) #others will be there - multiple cds
+        self.assertIn(exp, res) # others will be there - multiple cds
         
 
 q9uj41_1_protein_sequence = '''MVVVTGREPDSRRQDGAMSSSDAEDDFLEPATPTATQAGHALPLLPQERCAEFPALRGPP

@@ -20,7 +20,6 @@ class TestPdbCrossref(unittest.TestCase):
         self.assertTrue(a>b)
         
     def test_eq(self):
-        #parent_entry_id does not count in equality comparisons 
         a = seq.PdbCrossref('a','b',1,5,['A','B'])
         b = seq.PdbCrossref('b','b',1,5,['A','B'])
         self.assertTrue(a==b)

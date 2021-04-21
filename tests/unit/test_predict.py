@@ -135,12 +135,13 @@ LDVEQLGIPEQEYSCVVKMPSGEFARICRDLSHIGDAVVISCAKDGVKFSASGELGNGNI
 KLSQTSNVDKEEEAVTIEMNEPVQLTFALRYLNFFTKATPLSSTVTLSMSADVPLVVEYK
 IADMGHLKYYLAPKIEDEEGS
 '''.replace('\n', '') 
+
 sap18_sequence='''
 MAVESRVTQEEIKKEPEKPIDREKTCPLLLRVFTTNNGRHHRMDEFSRGNVPSSELQIYT
 WMDATLKELTSLVKEVYPEARKKGTHFNFAIVFTDVKRPGYRVKEIGSTMSGRKGTDDSM
 TLQSQKFQIGDYLDIAITPPNRAPPPSGRMRPY
 '''.replace('\n', '')
-#tr|A0A0U8TRG9|A0A0U8TRG9_TETTH - unlikely it will ever be mapped by id
+
 obscure_sequence ='''
 MSNRVQGGFDNNSGNNQSAQKQQAEKIPQITVPLNCFMINQIVKAAKENPQAHSGNHYEW
 YGAFENAIITAKFEFLQSINDSPKIMGKLSDSTGCIEVVIQKSKMSDELPEFVQAYEIEL
@@ -148,6 +149,7 @@ QNNGNRHKYVRAMLKMRKNAQIQLLYFSIVNDANEISRHGLDLCLRYLQRKHGIEDFMHM
 TNDKAHNNHNASAQKVHYQIDRNQQPKEQVLELMRQILKHNPNDQIPKSKIIEFFQSQLN
 QVQINQILQQLVSANEIFSVGSDNYLLNV 
 '''.replace('\n', '')
+
 rnps1_sequence = '''
 MDLSGVKKKSLLGVKENNKKSSTRAPSPTKRKDRSDEKSKDRSKDKGATKESSEKDRGRD
 KTRKRRSASSGSSSTRSRSSSTSSSGSSTSTGSSSGSSSSSASSRSGSSSTSRSSSSSSS
@@ -156,6 +158,7 @@ FSTYGKIKMIDMPVERMHPHLSKGYAYVEFENPDEAEKALKHMDGGQIDGQEITATAVLA
 PWPRPPPRRFSPPRRMLPPPPMWRRSPPRMRRRSRSPRRRSPVRRRSRSPGRRRHRSRSS
 SNSSR
 '''.replace('\n', '')
+
 acinus_sequence = '''ITIDDPVRTA 
 QVPSPPRGKI SNIVHISNLV RPFTLGQLKE LLGRTGTLVE EAFWIDKIKS 
 HCFVTYSTVE EAVATRTALH GVKWPQSNPK FLCADYAEQD ELDYHRGLLV 
@@ -164,6 +167,7 @@ REMERRERTR SEREWDRDKV REGPRSRSRS RDRRRKERAK SKEKKSEKKE
 KAQEEPPAKL LDDLFRKTKA APCIYWLPLT DSQIVQKEAE RAERAKEREK 
 RRKEQEEEEQ KEREKEAERE RNRQLEREKR REHSRERDRE
 '''.replace(' ', '').replace('\n', '')
+
 ubiquitin_sequence = '''MQIFVKTLTGKTITLEVEPSDTIENVKAKIQDKEGIPPDQQRLIFAGKQLEDGRTLSDYN
 IQKESTLHLVLRLRGGMQIFVKTLTGKTITLEVEPSDTIENVKAKIQDKEGIPPDQQRLI
 FAGKQLEDGRTLSDYNIQKESTLHLVLRLRGGMQIFVKTLTGKTITLEVEPSDTIENVKA
@@ -176,6 +180,7 @@ NVKAKIQDKEGIPPDQQRLIFAGKQLEDGRTLSDYNIQKESTLHLVLRLRGGMQIFVKTL
 TGKTITLEVEPSDTIENVKAKIQDKEGIPPDQQRLIFAGKQLEDGRTLSDYNIQKESTLH
 LVLRLRGGMQIFVKTLTGKTITLEVEPSDTIENVKAKIQDKEGIPPDQQRLIFAGKQLED
 GRTLSDYNIQKESTLHLVLRLRGGV'''.replace('\n','')
+
 acinus_full_sequence = '''MWRRKHPRTSGGTRGVLSGNRGVEYGSGRGHLGTFEGRWRKLPKMPEAVGTDPS
 TSRKMAELEEVTLDGKPLQALRVTDLKAALEQRGLAKSGQKSALVKRLKGALMLENLQKHSTPHAAFQPNSQIGEEMSQN
 SFIKQYLEKQQELLRQRLEREAREAAELEEASAESEDEMIHPEGVASLLPPDFQSSLERPELELSRHSPRKSSSISEEKG
@@ -194,27 +199,32 @@ HRGLLVDRPSETKTEEQGIPRPLHPPPPPPVQPPQHPRAEQREQERAVREQWAEREREMERRERTRSEREWDRDKVREGP
 RSRSRSRDRRRKERAKSKEKKSEKKEKAQEEPPAKLLDDLFRKTKAAPCIYWLPLTDSQIVQKEAERAERAKEREKRRKE
 QEEEEQKEREKEAERERNRQLEREKRREHSRERDRERERERERDRGDRDRDRERDRERGRERDRRDTKRHSRSRSRSTPV
 RDRGGRR'''.replace('\n', '')
+
 predator_exp = '''
 ------------------------------------hhhhh--------------------hhhhh--------------
 ------------------------------------------------------------------hhhhhh--------
 -eeeeee-------hhhhhhhh----eeee--------------eeeeee----hhhhhhhhh--------hhhhhhh--
 -----------------------------------------------------------------
 '''.replace('\n', '')
+
 mlr_exp = '''-------eeeeeeee----------------------------------------------------
 --------------------------------------------------------------------------------
 ---hh----------eeeee------hhhhhhhhhhh--eeeee-------------eeeeee---hhhhhhhhhh----
 ----heeehhhh------------------------------------------------------------------
 '''.replace('\n', '')
+
 hnn_exp='''-----h---eeeeee------------------------------------------------------
 -------------------------------------------------------------------------------h
 hh-----------eeeee------hhhhhhhhhh---eeee---hh---------eeeeee----hhhhhhhhh------
 --eeeeeeeh------------------------------------------------------------------
 '''.replace('\n', '')
+
 dpm_exp='''--e--e----ee-e-tttttt-----t---t-ttt-t-t-t-t-t---t-ht-ttt-t-t-hhhhhttt
 ttttt-tttttt-ttttttttttttttttt-tttttttttt-tttttttttt-t-ttt-hhhttthht-t---tt---hh
 hhhh-t-t-t--eeeeeeeeeeee--hehheeeee--eheehh-ehhhh--tt--eheehhht--hhhhhhhhht-----
 -hheehehehh----------t---hh-------h-t---hhhht-ttt--t-ehhht-t-t-hhhhttttt----
 '''.replace('\n', '')
+
 coils_exp = '''-----------------------------------------------------------------
 --------------------------------------------------------------------------------
 -------------------------------------------------555555555555555555555----------
@@ -224,11 +234,13 @@ iupred_exp = '''
 dddddddddddddddddddd--d--------------------ddd----------------------------------
 --------------------------ddd--d-dddddddddddd------dddddddddddddddddddddd
 '''.replace('\n', '')
+
 globplot_exp = '''-----------------dddddddddddddddddddddddddddddddddddddd-------
 -ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
 dddddddddddddddddddddGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
 GGGGGGGGGGGGGGGGGdddddddddddddddddddddddddddddddddddd-----dddddddddddddddddddddd
 d--'''.replace('\n', '')
+
 nls_exp = '''-------------------------------------------------------------------
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------

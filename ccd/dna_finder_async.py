@@ -11,7 +11,7 @@ from ccd.custom_exceptions import (IdNotFoundError, SequenceNotFoundError,
                                    NotAnORF, IGiveUpError, NoSequenceFound)  
 
 HEADERS = {'User agent': f'CrystallizationConstructDesigner_{app.config["EMAIL"]}'}
-MAX_SIZE = 10_000 #10 kBases of DNA should be sufficient 
+MAX_SIZE = 10_000 # 10 kBases of DNA should be sufficient 
 class ORFMatcher(object):
     
     def __init__(self):
@@ -20,9 +20,9 @@ class ORFMatcher(object):
     def match_exact(self, uniprot_isoform, cached_cds):
         for c in cached_cds:
             if uniprot_isoform.protein_seq == c.protein_seq:
-                uniprot_isoform.dna_seq = c.dna_seq  # TODO : account for possible different cds with same protein_seq
+                uniprot_isoform.dna_seq = c.dna_seq
                 uniprot_isoform.matched_with.append(c)
-        return uniprot_isoform #annotated with all matched cds
+        return uniprot_isoform # annotated with all matched cds
 
     def match_fuzzy(self, uniprot_isoform, cached_cds, max_mismatches=3):
         '''
@@ -33,7 +33,7 @@ class ORFMatcher(object):
         matched, and uniprot_isoform is updated to reflect the match 
         '''
         n_errors = 0
-        i = uniprot_isoform #I'm a lazy typist
+        i = uniprot_isoform
         for c in cached_cds:
             mismatches = []
             # different length (plus/minus tolerance) implies mismatch and is faster to check
@@ -41,7 +41,7 @@ class ORFMatcher(object):
             if abs(length_mismatch) > max_mismatches:
                 continue 
             # otherwise we just match position by position until we find more 
-            #than mismatches than max_mismatches or we run out of positions => match
+            # than mismatches than max_mismatches or we run out of positions => match
             for pos, aa in enumerate(i.protein_seq):
                 if n_errors > max_mismatches:
                     break
@@ -56,7 +56,6 @@ class ORFMatcher(object):
         return i
     
 class DatabaseCrawler(object):
-    # TODO: write proper docstring
     '''
     given a database id or a dna sequence, fetches all info necessary to start CCD 
     '''
@@ -100,12 +99,12 @@ class DatabaseCrawler(object):
         # fetching the corresponding entry from the NCBI Gene database
         # returns None if none exists
         self.protein.gene_xml_soup = self.search_gene_database()
-        #fetch all crossreferenced database entries from uniprot and gene entries
+        # fetch all crossreferenced database entries from uniprot and gene entries
         self.protein.db_crossrefs = self.scrape_crossreferences()
-        #in some rare instances, the gene database gets queried too fast and we get a 429
-        #let's wait one second to be sure
+        # in some rare instances, the gene database gets queried too fast and we get a 429
+        # let's wait one second to be sure
 
-        #fetch and cache all entries corresponding to cDNAs
+        # fetch and cache all entries corresponding to cDNAs
         if self.protein.kingdom == 'Eukaryota':
             self.protein.cached_cds = self.fetch_crossreferences(self.protein.db_crossrefs)
             self.logger.info('Done fetching crossreferences')
@@ -143,7 +142,7 @@ class DatabaseCrawler(object):
         Returns a UniprotPtorein object
         '''
         p = UniprotProtein(uniprot_id)
-        # 1 Let's retrieve the uniprot entry in html and xml form
+        # 1 let's retrieve the uniprot entry in html and xml form
         self.logger.info('Fetching Uniprot data for {}'.format(uniprot_id))
         fetcher = UniprotFetcher()
         p.uniprot_xml_soup = fetcher.fetch(uniprot_id, 'xml')
@@ -152,7 +151,7 @@ class DatabaseCrawler(object):
         return p
     
     def parse_uniprot_data(self, protein_object):
-        # 2 Grab some basic protein data from uniprot
+        # 2 grab some basic protein data from uniprot
         p = protein_object
         self.logger.info('Parsing Uniprot data for {}'.format(p.uniprot_id))
         parser = UniprotParser(p.uniprot_xml_soup, p.uniprot_html_soup)
@@ -164,13 +163,13 @@ class DatabaseCrawler(object):
             p.kingdom = parser.get_kingdom()
         except IGiveUpError: 
             msg = 'Cannot identify kingdom for {}'.format(self.uniprot_id)
-            raise IGiveUpError(msg) #We need kingdom to proceed with cds_matching
+            raise IGiveUpError(msg) # We need kingdom to proceed with cds_matching
         # 3 let's parse the entries for isoform ids, descriptions and sequences 
         isoform_descriptions = parser.get_isoform_descriptions()
         if not isoform_descriptions: #none found in the page
             isoform_descriptions = {p.uniprot_id: ['This is the only known isoform']}
-        # 4let's get the sequences of the isoforms from uniprot 
-        #(more robust than parsing the entry ourselves, i think)
+        # 4 let's get the sequences of the isoforms from uniprot 
+        # (more robust than parsing the entry ourselves, i think)
         isoforms = []
         fetcher = UniprotFetcher()
         for id_ in isoform_descriptions:
@@ -201,20 +200,20 @@ class DatabaseCrawler(object):
             return None
     
     def scrape_crossreferences(self):
-        #start from the uniprot page
+        # start from the uniprot page
         uniprot_parser = UniprotParser(self.protein.uniprot_xml_soup, 
                                self.protein.uniprot_html_soup)
         dbreferences = uniprot_parser.get_crossreferences()
-        #get more crossreferences to CCDS from the NCBI gene page
+        # get more crossreferences to CCDS from the NCBI gene page
         if self.protein.gene_xml_soup:
             try:
                 gene_parser = GeneParser()
                 ccds_refs = gene_parser.get_crossreferences(self.protein.gene_xml_soup)
-                #some duplicates might be present 
+                # some duplicates might be present 
                 dbreferences['CCDS'] = list(set(dbreferences['CCDS'] + ccds_refs))
             except AttributeError:  # no gene entry present
                 pass
-        # If any crossreference has been found, we are good. Otherwise we give up
+        # if any crossreference has been found we are good, therwise we give up
         has_entries = [True for i in list(dbreferences.values()) if i] #any will do
         if has_entries:
             return dbreferences
@@ -229,16 +228,16 @@ class DatabaseCrawler(object):
         summary_parser = SummaryParser()
         to_fetch = []
         query = []
-        #generate urls for checking summary of all entries 
+        # generate urls for checking summary of all entries 
         for database, id_list in db_crossrefs.items():
-            if database == 'CCDS': #no way to check size. Also, I'm 90% secure CCDS has no prokaryotes or archaea
+            if database == 'CCDS':
                 to_fetch += id_list
             elif database in ['EMBL','RefSeq']:
                 query += (formatter.format_for_summary(database, id_list))
-        #fetching and parsing summaries
+        # fetching and parsing summaries
         entry_summaries = self.loop.run_until_complete(self.fetcher.fetch_all(query))
-        entry_summaries = splitter.split(entry_summaries) #list of (entry_id, entry_summary) tuples
-        #removing all entries with size > max_size
+        entry_summaries = splitter.split(entry_summaries) # list of (entry_id, entry_summary) tuples
+        # removing all entries with size > max_size
         for s in entry_summaries:
             id_, size = summary_parser.get_id_and_size(s[1])
             if size <= max_size:
@@ -259,32 +258,31 @@ class DatabaseCrawler(object):
         
         
     def fetch_crossreferences(self, crossrefs):
-        #Preparing URLs to fetch asynchronously
+        # preparing URLs to fetch asynchronously
         formatter = UrlFormatter()
         queries = []
         for database, id_list in crossrefs.items():
             queries += formatter.format(database, id_list)
             self.logger.info(f'Fetching {len(id_list)} entries from {database}')
-        #fetching asynchronously
+        # fetching asynchronously
         entries = self.loop.run_until_complete(self.fetcher.fetch_all(queries))
-        #EMBL, RefSeq are returned as a single page and need to be splitted.
+        # EMBL, RefSeq are returned as a single page and need to be splitted.
         splitter = EntrySplitter()
         splitted = splitter.split(entries)
         return splitted
     
     def match_eukaryotes(self, parsed_entries):
         matcher = ORFMatcher()
-        #parse the database entries to a uniform format
-#         self.protein.cached_cds = self.parse_crossrefs_eukaryota(self.protein.cached_cds)
+        # parse the database entries to a uniform format
         if not self.protein.cached_cds:
             return []
-        #Attempt to match protein sequences exactly
+        # attempt to match protein sequences exactly
         for isoform in self.protein.isoforms:
             isoform = matcher.match_exact(isoform, parsed_entries)
         exactly_matched = sum([1 for i in self.protein.isoforms if i.matched_with])
         self.logger.info('{} out of {} isoforms match a DNA sequence exactly'.format(
                     exactly_matched, len(self.protein.isoforms)))
-        #Match any unmatched isoform within <max_mismatches> substitutions
+        # match any unmatched isoform within <max_mismatches> substitutions
         unmatched_isoforms = [i for i in self.protein.isoforms if not i.matched_with]
        
         if unmatched_isoforms: 
@@ -307,7 +305,7 @@ class DatabaseCrawler(object):
                     exactly_matched, len(self.protein.isoforms)))
             return self.protein.isoforms
         else:
-            raise IGiveUpError #TODO: implement ORF finding and translation
+            raise IGiveUpError
 
     def parse_crossrefs_non_eukaryota(self, cached_crossrefs):
         annotated_orfs = []
@@ -324,7 +322,6 @@ class DatabaseCrawler(object):
     def cache_cds_prokaryotes(self, crossref):
         id_, database = crossref
         fetcher, parser, get_sequence_method = self.disambiguate(database)
-#         fetch_method, _, get_sequence_method = self.disambiguate(database)        
         self.logger.info('{} has no annotated cds; looking for open reading frames'.format(
                         id_))
         possible_orfs = []
@@ -363,8 +360,8 @@ class DatabaseCrawler(object):
                 t = str(orf.dna_seq.translate()).replace('*', '')  # stop codon = '*'
                 if t == isoform.protein_seq:
                     orf.protein_seq = t
-                    #we expect only one, but we return a list for coherence with 
-                    #multiple matches that can happen on Codingsequences  
+                    # we expect only one, but we return a list for coherence with 
+                    # multiple matches that can happen on Codingsequences  
                     isoform.matched_with = [orf]
                     isoform.dna_seq = orf.dna_seq 
                     break
@@ -382,12 +379,12 @@ class DatabaseCrawler(object):
             raise
     
 if __name__ == '__main__':
-#    the following code generates json files for black box testing in test_dna_finder
+    # the following code generates json files for black box testing in test_dna_finder
     import getpass, platform, os, json
     generate_test_jsons = True # creates references for blackbox testing of this unit
     if platform.system() == 'Windows':
-        app.config['MUSCLE'] = r'D:\\Users\\{}\\Downloads\\muscle\\muscle3.8.31_i86win32.exe'.format(getpass.getuser())#
-    #the following code will generate json files for testing
+        app.config['MUSCLE'] = r'D:\\Users\\{}\\Downloads\\muscle\\muscle3.8.31_i86win32.exe'.format(getpass.getuser())
+    # the following code will generate json files for testing
     max_errors = 3
     id_ = 'EFTU2_ECOLI'
     static_path = os.path.normpath(os.getcwd() + '/../tests/unit/static')
