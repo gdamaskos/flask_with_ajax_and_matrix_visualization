@@ -4,7 +4,7 @@ CCD stands for Crystallisation Construct Designer.
 
 CCD is a web application that facilitates protein crystallography experiments. In this repository you can find the core of the application.
 
-You can visit the full site https://ccd.rhpc.nki.nl
+You can visit the complete site https://ccd.rhpc.nki.nl
 
 Basic web software used in this project:
 * Flask
