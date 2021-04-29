@@ -73,7 +73,7 @@ Visit the address:
 
 If needed, configure a reverse proxy. `config/apache.conf` is an example for apache.
 
-If you would like to create `systemd` (on Linux) services to run celery and gunicorn automatically see the `config/celery.service.example` and `config.ccd3.service.example`.
+If you would like to create `systemd` services (on Linux) to run celery and gunicorn automatically see the `config/celery.service.example` and `config.ccd3.service.example`.
 
 As an alternative, you can use python `supervisor` and use the `config/supervisor.example` to make a system service ccd managed by supervisor (edit where necessary).
 
