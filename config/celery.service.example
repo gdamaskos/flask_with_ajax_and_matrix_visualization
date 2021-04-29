@@ -1,0 +1,15 @@
+[Unit]
+Description=Celery instance to serve ccd3
+After=network.target
+
+[Service]
+User=ccd3
+Group=ccd3
+WorkingDirectory=/home/ccd3/ccd
+Environment=CCD_SETTINGS=/home/ccd3/ccd/config/ccd_settings.cfg
+ExecStart=/home/giorgos/virtual_environments/ccd3/bin/celery --app=ccd:celery worker --loglevel=info --purge 
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target ccd3.service
