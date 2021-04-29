@@ -71,9 +71,9 @@ Visit the address:
 
 # Further options for deployment
 
-If you would like to create `systemd` services to run CCD automatically see the `config/celery.service.example` and `config.ccd3.service.example`.
+If you would like to create `systemd` services to run CCD automatically see the `config/celery.service` and `config.ccd3.service`.
 
-As an alternative, you can use python `supervisor` and use the `config/supervisor.example` to make a system service ccd managed by supervisor (edit where necessary).
+As an alternative, you can use python `supervisor` and use the `config/supervisor.conf` to make a system service ccd managed by supervisor (edit where necessary).
 
 If needed, configure a reverse proxy. `config/apache.conf` is an example for apache.
 
