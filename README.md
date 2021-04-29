@@ -71,11 +71,11 @@ Visit the address:
 
 # Further options for deployment
 
-If needed, configure a reverse proxy. `config/apache.conf` is an example for apache.
-
-If you would like to create `systemd` services (on Linux) to run celery and gunicorn automatically see the `config/celery.service.example` and `config.ccd3.service.example`.
+If you would like to create `systemd` services to run CCD automatically see the `config/celery.service.example` and `config.ccd3.service.example`.
 
 As an alternative, you can use python `supervisor` and use the `config/supervisor.example` to make a system service ccd managed by supervisor (edit where necessary).
+
+If needed, configure a reverse proxy. `config/apache.conf` is an example for apache.
 
 The contact page (available only on developer versions for ccd.rhpc.nki.nl) requires a working Google maps API. 
 (see https://developers.google.com/maps/api-key-best-practices for how to obtain and configure one)
