@@ -75,7 +75,7 @@ If you would like to create `systemd` services to run CCD automatically see the 
 
 As an alternative, you can use python `supervisor` and use the `config/supervisor.conf` to make a system service ccd managed by supervisor (edit where necessary).
 
-If you need to configure a reverse proxy with apache check `config/apache.conf` to see an example.
+If you need to configure a reverse proxy with apache check `config/xxx-ccd.conf` to see an example.
 
 The contact page (available only on developer versions for ccd.rhpc.nki.nl) requires a working Google maps API. 
 (see https://developers.google.com/maps/api-key-best-practices for how to obtain and configure one)
