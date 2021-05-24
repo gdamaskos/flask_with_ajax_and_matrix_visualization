@@ -21,7 +21,7 @@ If you are using Docker, you can just run the image from the Docker Hub like thi
 	
 Then visit the address:
 
-    http://localhost:5000
+    http://localhost:8888
 
 Enjoy!
 You can also find the Dockerfile in this repository's root directory.
