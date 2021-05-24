@@ -13,6 +13,19 @@ Basic web software used in this project:
 * Google Material Design
 * Bootstrap
 
+# Docker image run
+
+If you are using Docker, you can just run the image from the Docker Hub like this:
+
+	docker run docker run -p 8888:5000 --name ccdcon giorgos0id/ccdimg
+	
+Then visit the address:
+
+    http://localhost:5000
+
+Enjoy!
+You can also find the Dockerfile in this repository's root directory.
+
 # Installation for development on your computer
 
 ## Prerequisites
