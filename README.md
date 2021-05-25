@@ -17,7 +17,7 @@ Basic web software used in this project:
 
 If you are using Docker, you can just run the image from the Docker Hub like this:
 
-	docker run docker run -p 8888:5000 --name ccd_container giorgos0id/ccdimg
+	docker run docker run -p 8888:5000 --name ccd_container gdamaskos/ccdimg
 	
 Then visit the address:
 
