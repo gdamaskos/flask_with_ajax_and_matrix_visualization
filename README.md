@@ -15,7 +15,11 @@ Basic web software used in this project:
 
 # Docker image run
 
-If you are using Docker, you can just run the image from the Docker Hub like this:
+If you do not have Docker you can install it in Ubuntu following these steps:
+
+	https://docs.docker.com/engine/install/ubuntu/
+	
+You can run the Docker image from the Docker Hub like this:
 
 	docker run docker run -p 8888:5000 --name ccd_container gdamaskos/ccdimg
 	
