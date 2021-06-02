@@ -21,7 +21,7 @@ If you do not have Docker you can install it in Ubuntu following these steps:
 	
 You can run the Docker image from the Docker Hub like this:
 
-	docker run docker run --rm -p 8888:5000 --name ccd_container gdamaskos/ccdimg
+	docker run docker -d -p 8888:5000 --name ccd_container gdamaskos/ccdimg
 	
 Then visit the address:
 
