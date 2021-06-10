@@ -1,4 +1,4 @@
-# CCD core
+# CCD
 
 CCD stands for Crystallisation Construct Designer. 
 
